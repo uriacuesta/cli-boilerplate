@@ -6,6 +6,9 @@
 # Follow Google Styleguide for shell scripts
 # https://google.github.io/styleguide/shellguide.html
 
+# @TODO
+# Add Auto Completion
+
 # Configuration
 set -e  # Exit when any command fails
 
