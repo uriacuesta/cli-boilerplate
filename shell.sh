@@ -2,8 +2,6 @@
 # Use Single Brackets [] when /bin/sh 
 # Double Brackets [[]] are for on /bin/bash
 
-# pipelines.sh
-
 # NOTES
 # Follow Google Styleguide for shell scripts
 # https://google.github.io/styleguide/shellguide.html
@@ -68,6 +66,7 @@ RUN_DIRECTORY="$(pwd)" # Variable for running tasks relative to current director
 # Tasks
 
 # Example usage of flag arguments
+# shell.sh --flag
 flag() {
   if [ ! -z $FLAG ]; then
     printf -- 'FLAG is set\n'
@@ -77,7 +76,7 @@ flag() {
 }
 
 # Example usage of multi arguments
-# shell.sh --multi --destination '/path/to/destination' --target '/path/to/target'
+# shell.sh --multi --destination foo --target '/bar'
 multi_parameter() {
   if [[ ! -z $TARGET ]] && [[ ! -z $DESTINATION ]]; then
   
