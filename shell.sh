@@ -1,4 +1,6 @@
 #! /bin/sh
+# Use Single Brackets [] when /bin/sh 
+# Double Brackets [[]] are for on /bin/bash
 
 # pipelines.sh
 
@@ -75,10 +77,38 @@ flag() {
 }
 
 # Example usage of multi arguments
+# shell.sh --multi --destination '/path/to/destination' --target '/path/to/target'
 multi_parameter() {
-  if [ ! -z $TARGET ] && [ ! -z $DESTINATION ]; then
-    printf -- "Target: ${TARGET}\n"
-    printf -- "Destination: ${DESTINATION}\n"
+  if [[ ! -z $TARGET ]] && [[ ! -z $DESTINATION ]]; then
+  
+    # Check if it starts with '/'
+    # Posix must use case
+    case $TARGET in
+      "/"*) 
+        printf -- "Target: ${TARGET}\n" ;;
+      *) 
+        printf -- "Target: ${RUN_DIRECTORY}/${TARGET}\n";;
+    esac
+
+    case $DESTINATION in
+      "/"*) 
+        printf -- "Destination: ${DESTINATION}\n" ;;
+      *) 
+        printf -- "Destination: ${RUN_DIRECTORY}/${DESTINATION}\n";;
+    esac
+
+    # Double Brackets only work in bash
+    # if [[ $TARGET == /* ]]; then
+    #   printf -- "Target: ${TARGET}\n"
+    # else
+    #   printf -- "Target: ${RUN_DIRECTORY}/${TARGET}\n"
+    # fi
+
+    # if [[ $DESTINATION == /* ]]; then
+    #   printf -- "Destination: ${DESTINATION}\n"
+    # else
+    #   printf -- "Destination: ${RUN_DIRECTORY}/${DESTINATION}\n"
+    # fi
   else
     printf -- "--target or --destination not-set\n"
   fi
