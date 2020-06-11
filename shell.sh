@@ -7,8 +7,7 @@
 # https://google.github.io/styleguide/shellguide.html
 
 # Configuration
-# exit when any command fails
-set -e
+set -e  # Exit when any command fails
 
 # Utility Functions
 
@@ -62,9 +61,11 @@ while [ ! -z "$1" ]; do
 done
 
 # Variables
-RUN_DIRECTORY="$(pwd)"
+RUN_DIRECTORY="$(pwd)" # Variable for running tasks relative to current directory
 
 # Tasks
+
+# Example usage of flag arguments
 flag() {
   if [ ! -z $FLAG ]; then
     printf -- 'FLAG is set\n'
@@ -73,6 +74,7 @@ flag() {
   fi
 }
 
+# Example usage of multi arguments
 multi_parameter() {
   if [ ! -z $TARGET ] && [ ! -z $DESTINATION ]; then
     printf -- "Target: ${TARGET}\n"
