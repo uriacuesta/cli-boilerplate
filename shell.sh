@@ -10,26 +10,23 @@
 # exit when any command fails
 set -e
 
-# Utility functions
-# --help utility
-function show_usage() {
+# Utility Functions
+
+# Help text
+show_usage() {
   printf -- 'Base shell scripts\n';
   printf -- '\n'
   printf -- '   -f | --flag [--name]] \n';
   printf -- '  -mp | --multi [--target] [--destination] \n';
   printf -- '   -t | --target \n';
   printf -- '   -d | --destination \n';
+  printf -- '   -h | --help \n';
   check_commands
   exit 0;
 }
 
-
-command_exists () {
-    type "$1" &> /dev/null ;
-}
-
-function check_commands() {
-  # Check if command is available
+# Check if required commands is available
+check_commands() {
   if ! [ -x "$(command -v foo)" ]; then
     printf -- "\nYou don't seem to have foo installed.\n";
     printf -- 'Please install foo \n';
@@ -67,8 +64,8 @@ done
 # Variables
 RUN_DIRECTORY="$(pwd)"
 
-# Functions
-function flag() {
+# Tasks
+flag() {
   if [ ! -z $FLAG ]; then
     printf -- 'FLAG is set\n'
   else
@@ -76,7 +73,7 @@ function flag() {
   fi
 }
 
-function multi_parameter() {
+multi_parameter() {
   if [ ! -z $TARGET ] && [ ! -z $DESTINATION ]; then
     printf -- "Target: ${TARGET}\n"
     printf -- "Destination: ${DESTINATION}\n"
