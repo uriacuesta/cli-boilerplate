@@ -15,7 +15,7 @@ set -e  # Exit when any command fails
 # Utility Functions
 
 # Help text
-show_usage() {
+help() {
   printf -- 'Base shell scripts\n';
   printf -- '\n'
   printf -- '   -f | --flag [--name]] \n';
@@ -57,7 +57,7 @@ while [ ! -z "$1" ]; do
       DESTINATION="$1"
       ;;
     -h|--help)
-      show_usage
+      help
       ;;
   esac
   shift
@@ -125,7 +125,7 @@ main() {
     printf -- "Running Multi Parameter command: \n"
     multi_parameter
   else
-    show_usage
+    help
   fi
 }
 
