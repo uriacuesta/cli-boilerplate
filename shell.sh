@@ -1,6 +1,6 @@
 #! /bin/sh
-# Use Single Brackets [] when /bin/sh 
-# Double Brackets [[]] are for on /bin/bash
+# Use Single Brackets [] for /bin/sh 
+# Double Brackets [[]] for /bin/bash
 
 # NOTES
 # Follow Google Styleguide for shell scripts
