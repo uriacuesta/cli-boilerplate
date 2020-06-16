@@ -15,7 +15,7 @@ set -e  # Exit when any command fails
 # Utility Functions
 
 # Help text
-help() {
+show_usage() {
   printf -- 'Base shell scripts\n';
   printf -- '\n'
   printf -- '   -f | --flag [--name]] \n';
@@ -23,19 +23,18 @@ help() {
   printf -- '   -t | --target \n';
   printf -- '   -d | --destination \n';
   printf -- '   -h | --help \n';
-  check_commands
+  check_command foo
   exit 0;
 }
 
 # Check if required commands is available
-check_commands() {
-  if ! [ -x "$(command -v foo)" ]; then
-    printf -- "\nYou don't seem to have foo installed.\n";
-    printf -- 'Please install foo \n';
-    printf -- 'Exiting with code 127...\n';
+check_command() {
+  # Check if command is available
+  if ! [ -x "$(command -v $1)" ]; then
+    printf -- "\033[0;31m";
+    printf -- " You don't seem to have '$1' installed.\n";
+    printf -- " Please install $1 \n";
     exit 127;
-  else
-    echo "foo --version"
   fi;
 }
 
@@ -57,7 +56,7 @@ while [ ! -z "$1" ]; do
       DESTINATION="$1"
       ;;
     -h|--help)
-      help
+      show_usage
       ;;
   esac
   shift
@@ -125,7 +124,7 @@ main() {
     printf -- "Running Multi Parameter command: \n"
     multi_parameter
   else
-    help
+    show_usage
   fi
 }
 
