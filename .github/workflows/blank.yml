@@ -25,5 +25,6 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Test Shell Script
       run: |
+        ls -la
         chmod 755 ./shell.sh
         ./shell.sh --multi --destination foo --target '/bar'
