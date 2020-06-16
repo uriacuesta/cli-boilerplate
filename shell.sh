@@ -15,7 +15,7 @@ set -e  # Exit when any command fails
 # Utility Functions
 
 # Help text
-show_usage() {
+help() {
   printf -- 'Base shell scripts\n';
   printf -- '\n'
   printf -- '   -f | --flag [--name]] \n';
@@ -80,7 +80,7 @@ flag() {
 # Example usage of multi arguments
 # shell.sh --multi --destination foo --target '/bar'
 multi_parameter() {
-  if [[ ! -z $TARGET ]] && [[ ! -z $DESTINATION ]]; then
+  if [ ! -z $TARGET ] && [ ! -z $DESTINATION ]; then
   
     # Check if it starts with '/'
     # Posix must use case
@@ -124,7 +124,7 @@ main() {
     printf -- "Running Multi Parameter command: \n"
     multi_parameter
   else
-    show_usage
+    help
   fi
 }
 
